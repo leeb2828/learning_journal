@@ -1,0 +1,22 @@
+{% extends 'users/base.html' %} 
+
+{% block content %}
+<div class="site-header">
+    <a class="button" href="{% url 'login' %}"><span>Login</span></a>
+</div>
+<div class="register_form">
+    <div class="login_user">
+        <h2>Register</h2>
+    </div>
+    <form method="POST">
+        {% csrf_token %} 
+        {{ form }}
+        <button class="button" type="submit">Sign Up</button> 
+    </form>
+</div>
+{% endblock content %}
+
+
+
+
+          

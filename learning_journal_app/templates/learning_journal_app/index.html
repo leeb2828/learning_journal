@@ -1,0 +1,28 @@
+{% extends "learning_journal_app/base.html" %}
+
+{% block content %}  
+    <section>
+        <div class="container">
+            <div class="entry-list">
+                <div class="welcome_user">
+                    <h2>Welcome {{ user.get_username }}!</h2>
+                </div>
+                <article>
+                    <h2><a href="#">Default Post</a></h2>
+                    <time datetime="2016-01-31">January 31, 2016</time>
+                    <div><small>By author name</small></div>
+                </article>
+                {% if posts %}
+                    {% for post in posts %} 
+                        <article>
+                            <h2><a href="{% url 'detail' post.title post.date %}">{{ post.title }}</a></h2>
+                            <time datetime="{{ post.date }}">{{ post.date|date:"F d, Y" }}</time>
+                            <div><small>By {{ post.author }}</small></div>
+                        </article>
+                    {% endfor %} 
+                {% endif %}
+            </div>
+        </div>
+    </section>
+{% endblock content %}
+
